@@ -7,20 +7,21 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import "semantic-ui-css/semantic.min.css";
 import { Button, Header, Icon, List } from "semantic-ui-react";
-import LoginPage from "@/component/loginPage";
+import LoginPage from "@/component/LoginPage";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const apiClient = createApiClient();
+  /*  const apiClient = createApiClient();
   const [dataSources, setDataSources] = useState<any>([]);
   useEffect(() => {
-    const fetch = async () => {
+    createApiClient();
+     const fetch = async () => {
       const dataSources = await apiClient.getDataSources();
       setDataSources(dataSources);
     };
     fetch();
-  }, []);
+  }, []); */
   return (
     <div className="home-body">
       <div className="home-header-container">
@@ -31,8 +32,8 @@ export default function Home() {
           textAlign="center"
           color="blue"
         >
-          <Icon name="clipboard" />
-          <Header.Content>Welcome to AutoSurvey</Header.Content>
+          <Icon name="stopwatch" />
+          <Header.Content>Welcome to Stepcounter</Header.Content>
         </Header>
       </div>
 
