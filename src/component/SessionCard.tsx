@@ -1,7 +1,7 @@
-import { DataSet, SessionInfo, StepInfo } from "@/type/type";
-import PointTable from "./PointTable";
+import { SessionInfo } from "@/type/type";
 import { useState } from "react";
 import { Button, Card, Modal } from "semantic-ui-react";
+import getHoursfromMillisec from "@/helper/method";
 
 type sessionCardProps = {
   session: SessionInfo;
@@ -13,24 +13,6 @@ export default function sessionCard({ session, section }: sessionCardProps) {
   let startTime = new Date(parseInt(session.startTimeMillis));
   let endTime = new Date(parseInt(session.endTimeMillis));
 
-  function getYoutubeLikeToDisplay(millisec: number) {
-    var seconds: string = (millisec / 1000).toFixed(0);
-    var minutes: string = Math.floor(parseInt(seconds) / 60).toString();
-    var hours: string = "";
-    if (parseInt(minutes) > 59) {
-      hours = Math.floor(parseInt(minutes) / 60).toString();
-      hours = parseInt(hours) >= 10 ? hours : "0" + hours;
-      minutes = (parseInt(minutes) - parseInt(hours) * 60).toString();
-      minutes = parseInt(minutes) >= 10 ? minutes : "0" + minutes;
-    }
-
-    seconds = Math.floor(parseInt(seconds) % 60).toString();
-    seconds = parseInt(seconds) >= 10 ? seconds : "0" + seconds;
-    if (hours != "") {
-      return hours + ":" + minutes + ":" + seconds;
-    }
-    return minutes + ":" + seconds;
-  }
   return (
     <Modal
       animation={false}
@@ -49,7 +31,7 @@ export default function sessionCard({ session, section }: sessionCardProps) {
           </Card.Content>
           <Card.Content extra>
             Duration:{" "}
-            {getYoutubeLikeToDisplay(
+            {getHoursfromMillisec(
               parseInt(session.endTimeMillis) -
                 parseInt(session.startTimeMillis)
             )}

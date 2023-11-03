@@ -18,11 +18,6 @@ export default function Login({ filterValue }: LoginProps) {
   if (session) {
     return (
       <>
-        <Button onClick={() => signOut()} type="button" className="">
-          Sign Out of Google
-        </Button>
-        {/* <UserCard user={session?.user} /> */}
-
         <Modal
           animation={false}
           onClose={() => setOpen(false)}
@@ -60,6 +55,9 @@ export default function Login({ filterValue }: LoginProps) {
             ) : null}
           </Modal.Content>
         </Modal>
+        <Button onClick={() => signOut()} type="button" className="">
+          Sign Out of Google
+        </Button>
         <DataContent token={code} filterValue={filterValue} />
       </>
     );

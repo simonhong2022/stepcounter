@@ -1,4 +1,5 @@
 import { SessionInfo, StepInfo } from "@/type/type";
+import { signOut } from "next-auth/react";
 import { Dispatch, SetStateAction } from "react";
 
 const data = [
@@ -49,11 +50,11 @@ export async function sessionsApiClient(
     cache: "no-store",
     headers: { Authorization: `Bearer ${token}` },
     mode: "cors",
-  })
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => setSessions(data.session));
+  });
+  if (result.status !== 200) {
+    signOut();
+  }
+  return await result.json().then((data) => setSessions(data.session));
 }
 
 export async function createApiClient(
