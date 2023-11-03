@@ -38,7 +38,7 @@ export default function Home() {
           color="blue"
         >
           <Icon name="stopwatch" />
-          <Header.Content>Welcome to Stepcounter</Header.Content>
+          <Header.Content>Welcome to Activity Counter</Header.Content>
         </Header>
       </div>
       <div className="home-filter">
