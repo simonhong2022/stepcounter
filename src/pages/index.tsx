@@ -8,10 +8,15 @@ import Link from "next/link";
 import "semantic-ui-css/semantic.min.css";
 import { Button, Header, Icon, List } from "semantic-ui-react";
 import LoginPage from "@/component/LoginPage";
+import SectionFilter from "@/component/SectionFilter";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [filterValue, setFilterValue] = useState("all");
+  const filterChanged = (value: string) => {
+    setFilterValue(value);
+  };
   /*  const apiClient = createApiClient();
   const [dataSources, setDataSources] = useState<any>([]);
   useEffect(() => {
@@ -36,8 +41,11 @@ export default function Home() {
           <Header.Content>Welcome to Stepcounter</Header.Content>
         </Header>
       </div>
+      <div className="home-filter">
+        <SectionFilter filterChanged={filterChanged} />
+      </div>
 
-      <LoginPage></LoginPage>
+      <LoginPage filterValue={filterValue} />
 
       <footer className="home-footer">
         <List horizontal>

@@ -1,5 +1,4 @@
-import { Bucket } from "@/type/type";
-import axios from "axios";
+import { SessionInfo, StepInfo } from "@/type/type";
 import { Dispatch, SetStateAction } from "react";
 
 const data = [
@@ -33,29 +32,33 @@ const data = [
   },
 ];
 
-const BASE_AGG_URL = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
-let stepArray = [];
+const endTime = new Date().toJSON();
+let d = new Date();
+d.setMonth(d.getMonth() - 1);
+const startTime = d.toJSON();
 
-/* export const createApiClient = (token: string) => {
-  return {
-    getDataSources: async () => {
-      try {
-        const response = await axios({
-          method: "POST",
-          headers: { authorization: `Bearer ${token}` },
-        });
-        console.log(response.data);
-        return response.data;
-      } catch (e) {
-        console.log(e);
-      }
-    },
-  };
-}; */
+//startTime=2023-04-01T00:00:00.000Z&endTime=2023-10-31T23:59:59.999Z
+const BASE_SESSION_URL = `https://www.googleapis.com/fitness/v1/users/me/sessions?startTime=${startTime}&endTime=${endTime}`;
+const BASE_AGG_URL = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
+
+export async function sessionsApiClient(
+  token: string,
+  setSessions: Dispatch<SetStateAction<SessionInfo[]>>
+) {
+  const result = await fetch(BASE_SESSION_URL, {
+    cache: "no-store",
+    headers: { Authorization: `Bearer ${token}` },
+    mode: "cors",
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => setSessions(data.session));
+}
 
 export async function createApiClient(
   token: string,
-  setDataSources: Dispatch<SetStateAction<Bucket[]>>
+  setDataSources: Dispatch<SetStateAction<StepInfo[]>>
 ) {
   const reqBody: any = {
     aggregateBy: [
@@ -65,8 +68,8 @@ export async function createApiClient(
       },
     ],
     bucketByTime: { durationMillis: 86400000 },
-    startTimeMillis: 1454284800000,
-    endTimeMillis: 1455062400000,
+    startTimeMillis: 1696129200000, // new Date().getTime();
+    endTimeMillis: 1698962400000,
   };
   const reqOptions = {
     method: "POST",
@@ -78,5 +81,6 @@ export async function createApiClient(
       return response.json();
     })
     .then((data) => setDataSources(data.bucket));
+
   return result;
 }
