@@ -1,3 +1,30 @@
+export type User = {
+  userId: string;
+  userName: string;
+  userEmail: string;
+  height: number | null;
+  expectedWeight: number | null;
+  age: number | null;
+  sex: string;
+  mode: string;
+  activityGoal: number | null;
+  durationGoal: number | null;
+  recommendations: [];
+};
+
+export type UserDTO = {
+  userName: string;
+  userEmail: string;
+  height: number | null;
+  expectedWeight: number | null;
+  age: number | null;
+  sex: string;
+  mode: string;
+  activityGoal: number | null;
+  durationGoal: number | null;
+  recommendations: [];
+};
+
 export type StepInfo = {
   startTimeMillis: string;
   endTimeMillis: string;
@@ -7,6 +34,29 @@ export type StepInfo = {
 export type DataSet = {
   dataSourceId: string;
   point: [];
+};
+
+export type Activity = {
+  sessionId: string;
+  activity: string;
+  activityType: number;
+  description: string;
+  startTime: string;
+  endTime: string;
+  caloreiConsumed: number | null;
+  avgHearRate: number | null;
+  email: string;
+};
+
+export type ActivityDTO = {
+  activity: string;
+  activityType: number;
+  description: string;
+  startTime: string;
+  endTime: string;
+  caloreiConsumed: number | null;
+  avgHearRate: number | null;
+  email: string;
 };
 
 export type SessionInfo = {

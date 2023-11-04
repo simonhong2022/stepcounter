@@ -18,35 +18,3 @@ export default function getHoursfromMillisec(millisec: number) {
   }
   return minutes + ":" + seconds;
 }
-
-export const options: ApexOptions = {
-  title: {
-    text: "Activity Share by number",
-  },
-  plotOptions: {
-    pie: {
-      donut: {
-        labels: {
-          show: true,
-          total: {
-            showAlways: true,
-            show: true,
-          },
-        },
-      },
-    },
-  },
-  responsive: [
-    {
-      breakpoint: 480,
-      options: {
-        chart: {
-          width: 200,
-        },
-        legend: {
-          position: "bottom",
-        },
-      },
-    },
-  ],
-};

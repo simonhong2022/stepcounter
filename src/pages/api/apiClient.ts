@@ -1,4 +1,11 @@
-import { SessionInfo, StepInfo } from "@/type/type";
+import {
+  Activity,
+  ActivityDTO,
+  SessionInfo,
+  StepInfo,
+  User,
+  UserDTO,
+} from "@/type/type";
 import { signOut } from "next-auth/react";
 import { Dispatch, SetStateAction } from "react";
 
@@ -32,6 +39,8 @@ const data = [
     dataQualityStandard: [],
   },
 ];
+
+// from Google Fit APIs
 
 const endTime = new Date().toJSON();
 let d = new Date();
@@ -84,4 +93,125 @@ export async function createApiClient(
     .then((data) => setDataSources(data.bucket));
 
   return result;
+}
+
+// API calls from User
+const BASE_USER_URL = "http://localhost:8080/api/users";
+export async function getUserApi(
+  email: string | string[],
+  setUser: Dispatch<SetStateAction<User>>
+) {
+  const userURL = BASE_USER_URL + `/${email}`;
+  return await fetch(userURL)
+    .then((res) => res.json())
+    .then((data) => setUser(data));
+}
+
+export async function addUser(
+  event: React.FormEvent<HTMLFormElement>,
+  email: string,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  setUser: Dispatch<SetStateAction<User>>,
+  setErrMessage: Dispatch<SetStateAction<string>>
+) {
+  const reqBody: UserDTO = {
+    userName: event.currentTarget.nickName.value,
+    userEmail: email,
+    height: event.currentTarget.height.value,
+    expectedWeight: event.currentTarget.weight.value,
+    age: event.currentTarget.age.value,
+    sex: event.currentTarget.sex.value,
+    mode: event.currentTarget.mode.value,
+    activityGoal: event.currentTarget.activityGoal.value,
+    durationGoal: event.currentTarget.durationGoal.value,
+    recommendations: [],
+  };
+
+  const reqOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(reqBody),
+  };
+  const response = await fetch(BASE_USER_URL, reqOptions);
+
+  if (response.ok) {
+    await getUserApi(email, setUser);
+    setOpen(false);
+    setErrMessage("");
+  } else {
+    setErrMessage("User already exist.");
+  }
+}
+
+export async function updateUser(
+  id: string | string[] | undefined,
+  email: string,
+  event: React.FormEvent<HTMLFormElement>,
+  setUser: Dispatch<SetStateAction<User>>,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  setErrMessage: Dispatch<SetStateAction<string>>
+) {
+  const reqBody: UserDTO = {
+    userName: event.currentTarget.nickName.value,
+    userEmail: email,
+    height: event.currentTarget.height.value,
+    expectedWeight: event.currentTarget.weight.value,
+    age: event.currentTarget.age.value,
+    sex: event.currentTarget.sex.value,
+    mode: event.currentTarget.mode.value,
+    activityGoal: event.currentTarget.activityGoal.value,
+    durationGoal: event.currentTarget.durationGoal.value,
+    recommendations: [],
+  };
+
+  const reqOptions = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(reqBody),
+  };
+  const response = await fetch(BASE_USER_URL + "/" + `${email}`, reqOptions);
+
+  if (response.ok) {
+    await getUserApi(email, setUser);
+    setOpen(false);
+    setErrMessage("");
+  } else {
+    setErrMessage("User already exist.");
+  }
+}
+
+// session api
+const BASE_ACTIVITY_URL = "http://localhost:8080/api/sessions";
+export async function addSessions(
+  sessions: SessionInfo[],
+  email: string,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  //setActivities: Dispatch<SetStateAction<Activity[]>>,
+  setErrMessage: Dispatch<SetStateAction<string>>
+) {
+  for (let i = 0; i < sessions.length; i++) {
+    const reqBody: ActivityDTO = {
+      activity: sessions[i].name,
+      activityType: sessions[i].activityType,
+      description: sessions[i].description,
+      startTime: sessions[i].startTimeMillis,
+      endTime: sessions[i].endTimeMillis,
+      caloreiConsumed: null,
+      avgHearRate: null,
+      email: email,
+    };
+    const reqOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(reqBody),
+    };
+    const response = await fetch(BASE_ACTIVITY_URL, reqOptions);
+    if (response.ok) {
+      //await getUserApi(email, setUser);
+      setOpen(false);
+      setErrMessage("");
+    } else {
+      setErrMessage("Activity already exist.");
+    }
+  }
 }
