@@ -41,7 +41,7 @@ type dataContentProps = {
   email: string;
 };
 
-export default function dataContent({ token, email }: dataContentProps) {
+export default function DataContent({ token, email }: dataContentProps) {
   const [sessions, setSessions] = useState<SessionInfo[]>([]);
   const [user, setUser] = useState<User>(initUser);
   const [open, setOpen] = useState(false);
