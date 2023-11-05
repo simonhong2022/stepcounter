@@ -8,7 +8,7 @@ type sessionCardProps = {
   section: string;
 };
 
-export default function sessionCard({ session, section }: sessionCardProps) {
+export default function SessionCard({ session, section }: sessionCardProps) {
   const [open, setOpen] = useState(false);
   let startTime = new Date(parseInt(session.startTimeMillis));
   let endTime = new Date(parseInt(session.endTimeMillis));
