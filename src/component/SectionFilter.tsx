@@ -12,7 +12,8 @@ export default function SectionFilter(props: SectionFilterProps) {
 
   return (
     <Dropdown
-      placeholder="Select Section"
+      className="data-content-dropdown"
+      placeholder="Select Session"
       fluid
       selection
       options={dropdownSections}

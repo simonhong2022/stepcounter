@@ -110,9 +110,9 @@ export const sections: ISections[] = [
     text: "walking",
     code: 7,
   },
-  {
+  /* {
     value: "running",
     text: "running",
     code: 8,
-  },
+  }, */
 ];

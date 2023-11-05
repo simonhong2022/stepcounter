@@ -1,0 +1,11 @@
+.home-header-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.home-footer {
+    margin-top: 5%;
+    margin-bottom: 1%;
+    text-align: center;
+}

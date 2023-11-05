@@ -1,18 +1,11 @@
 import { Inter } from "next/font/google";
-import { useState } from "react";
 import "semantic-ui-css/semantic.min.css";
 import { Header, Icon, List } from "semantic-ui-react";
 import LoginPage from "@/component/LoginPage";
-import SectionFilter from "@/component/SectionFilter";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [filterValue, setFilterValue] = useState("all");
-  const filterChanged = (value: string) => {
-    setFilterValue(value);
-  };
-
   return (
     <div className="home-body">
       <div className="home-header-container">
@@ -27,12 +20,7 @@ export default function Home() {
           <Header.Content>Welcome to Activity Counter</Header.Content>
         </Header>
       </div>
-      <div className="home-filter">
-        <SectionFilter filterChanged={filterChanged} />
-      </div>
-
-      <LoginPage filterValue={filterValue} />
-
+      <LoginPage />
       <footer className="home-footer">
         <List horizontal>
           <List.Item>

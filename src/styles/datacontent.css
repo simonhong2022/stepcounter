@@ -1,0 +1,54 @@
+.data-content-btns {
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.data-content-btns-goal-container {
+    text-align: center;
+}
+
+.data-content-btns-goal-container {
+    margin-left: 7%;
+}
+
+.ui.right.floated.button.sign-out {
+    margin-right: 1%;
+}
+
+.ui.placeholder.segment {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.ui.fluid.selection.dropdown.data-content-dropdown {
+    margin-left: 1%;
+    margin-bottom: 1%;
+    width: 20%;
+}
+
+.data-content-header-h2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.Collapsible {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.Collapsible__contentInner {
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+}
+
+.ui.cards.session-card-group {
+    justify-content: space-evenly;
+}
+
+.session-card {
+    margin-bottom: 5%;
+}
