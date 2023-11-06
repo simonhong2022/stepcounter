@@ -1,40 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Activity Counter Project
 
-## Getting Started
+## Introduction 
+Approach(getting 30 days of session info): 
 
-First, run the development server:
+Show overview of session frequency and duration 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Show details of each session(start date, end date, type, etc)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Let user to write their info to the database 
+(Activity Goal and Duration Goal : required)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Display differences between actual data and their goal
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Give them feedback to push / complement / encourage 
+(challenge / adjust)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+##  Table of content
+- [How to run the application](#how-to-run-the-application)
+- [The application](#the-application)
+- [Tech stack and frameworks](#tech-stack-and-frameworks)
+- [About us](#about-us)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## How to run the application:
+- Click on the vercel link: https://activitycounter.vercel.app/
+  or
+- After cloning the repository, install all the dependencies: npm install
+- Be sure that autosurvey-backend is running (see https://github.com/simonhong2022/stepcounter-backend readme)
+- Run the application: npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+## The Application
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Landing page / login form:
+- When landing on the page, user must sign up:
+  <img src="assets/login.png" width="600">
+- After signing up the user can sign in
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Welcome page
+- In the welcome page:
+  - User can create profile with activity goal and duration goal
+  <img src="assets/first.png" width="600">
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech stack, Frameworks and libriaries
+### Tech
+  - Java
+  - TypeScript
+  - PostgreSQL
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Frameworks
+  - Spring Boot / Web
+  - Next.js 
+
+### Libraries
+  - NextAuth 
+  - Apex Charts 
+  - Semantic UI 
+
+## About us
+  - Simon: [![Linkedin Badge](https://img.shields.io/badge/Simon-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/seongbong-hong-080293121/)
+           [![Github-Nate](https://img.shields.io/badge/Simon-Github-black?style=flat&logo=github&logoColor=white)](https://github.com/simonhong2022)
+  
