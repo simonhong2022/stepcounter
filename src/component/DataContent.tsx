@@ -430,13 +430,13 @@ export default function DataContent({ token, email }: dataContentProps) {
                 ) : (
                   <Header icon>
                     <Icon color="red" name="minus" />
-                    Let's try activity goal!
+                    Let's try more activities!
                     <Header.Subheader>
                       You need{" "}
                       <strong>
                         <big>{user.activityGoal! - sessions.length}</big>
                       </strong>{" "}
-                      more <strong>activity</strong> to reach your goal. Keep
+                      more <strong>activities</strong> to reach your goal. Keep
                       push!{" "}
                     </Header.Subheader>
                     <Header.Subheader>
@@ -476,7 +476,7 @@ export default function DataContent({ token, email }: dataContentProps) {
                 ) : (
                   <Header icon>
                     <Icon color="red" name="minus" />
-                    Let's try duration goal!
+                    Let's try more duration!
                     <Header.Subheader>
                       You need{" "}
                       <strong>
