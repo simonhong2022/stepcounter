@@ -127,7 +127,10 @@ export default function DataContent({ token, email }: dataContentProps) {
 
   const options1: ApexOptions = {
     title: {
-      text: "Activity Duration Chart",
+      text: `Duration Chart: Total ${durationData.reduce(
+        (a, b) => a + b,
+        0
+      )} hours`,
     },
     xaxis: {
       categories: labelData,

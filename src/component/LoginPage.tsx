@@ -6,8 +6,6 @@ import { Button, Icon, Message } from "semantic-ui-react";
 
 export default function Login() {
   const { data: session } = useSession();
-  //const code: string = session?.access_token as string;
-  //const email: string = session?.user.email as string;
 
   if (session) {
     return (
