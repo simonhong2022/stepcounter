@@ -437,7 +437,7 @@ export default function DataContent({ token, email }: dataContentProps) {
                         <big>{user.activityGoal! - sessions.length}</big>
                       </strong>{" "}
                       more <strong>activities</strong> to reach your goal. Keep
-                      push!{" "}
+                      pushing!{" "}
                     </Header.Subheader>
                     <Header.Subheader>
                       Your Goal: {user.activityGoal}
